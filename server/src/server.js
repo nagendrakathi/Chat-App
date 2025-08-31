@@ -1,6 +1,7 @@
 import express from "express"
 import cookieParser from "cookie-parser"
 import env from "dotenv"
+import cors from "cors"
 import authRoutes from "./routes/auth.route.js"
 import {connectDB} from "./config/db.js"
 import messageRoutes from "./routes/message.route.js"
@@ -11,6 +12,11 @@ const PORT=process.env.PORT
 
 app.use(cookieParser())
 app.use(express.json())
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials:true,
+}))
+
 app.use("/api/auth", authRoutes)
 app.use("/api/message",messageRoutes)
 
