@@ -20,7 +20,7 @@ export default function SettingsPage() {
         <div className="flex items-center gap-2">
           <Link
             to={-1}
-            className="flex items-center gap-1 text-sm text-primary hover:underline"
+            className="flex items-center gap-1 text-sm text-primary hover:underline cursor-pointer"
           >
             <ArrowLeft size={16} />
             Back
