@@ -5,8 +5,7 @@ export default function SidebarSkeleton() {
 
   return (
     <aside
-      className="h-full w-20 lg:w-72 border-r border-base-300 
-    flex flex-col transition-all duration-200"
+      className="h-full w-full sm:w-60 lg:w-100 border-r border-base-300 flex flex-col transition-all duration-200"
     >
       {/* Header */}
       <div className="border-b border-base-300 w-full p-5">
