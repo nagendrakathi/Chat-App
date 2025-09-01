@@ -7,6 +7,7 @@ export default function MessageInput() {
   const [imagePreview, setImagePreview] = useState(null);
   const fileInputRef = useRef(null);
   const { sendMessage } = useChatStore();
+  const [isSending, setIsSending] = useState(false);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -29,6 +30,7 @@ export default function MessageInput() {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
+    setIsSending(true);
     if (!text.trim() && !imagePreview) return;
 
     try {
@@ -41,8 +43,11 @@ export default function MessageInput() {
       setText("");
       setImagePreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
+      setIsSending(false);
     } catch (error) {
       console.error("Failed to send message:", error);
+      toast.error("Failed to send message. Please try again.");
+      setIsSending(false);
     }
   };
   return (
@@ -86,7 +91,7 @@ export default function MessageInput() {
 
           <button
             type="button"
-            className={`hidden sm:flex btn btn-md btn-circle
+            className={` sm:flex btn btn-md btn-circle
                      ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
             onClick={() => fileInputRef.current?.click()}
           >
@@ -96,9 +101,9 @@ export default function MessageInput() {
         <button
           type="submit"
           className="btn btn-md btn-circle"
-          disabled={!text.trim() && !imagePreview}
+          disabled={isSending}
         >
-          <Send size={20}/>
+          <Send size={20} />
         </button>
       </form>
     </div>
