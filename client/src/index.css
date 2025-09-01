@@ -7,11 +7,3 @@
 *{
   font-family: 'Rubik', sans-serif;
 }
-/* Add this to your global CSS file */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-}
