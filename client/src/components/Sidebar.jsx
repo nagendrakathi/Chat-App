@@ -45,7 +45,12 @@ export default function Sidebar() {
             <span className="text-sm">Show online only</span>
           </label>
           <span className="text-xs text-zinc-500">
-           ({filteredUsers.length} users found)
+            {/* ({onlineUsers.length - 1} online) */}
+            {onlineUsers.length - 1 === 0
+              ? "(No users online)"
+              : `(${onlineUsers.length - 1} user${
+                  onlineUsers.length - 1 > 1 ? "s" : ""
+                } online)`}
           </span>
         </div>
       </div>
