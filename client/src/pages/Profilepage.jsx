@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Camera, Mail, User } from "lucide-react";
-
+import { Link } from "react-router-dom";
 export default function Profilepage() {
   const { authUser, isUpdatingProfile, updateProfile } = useAuthStore();
   const [selectedImg, setSelectedImg] = useState(null);
@@ -21,6 +21,15 @@ export default function Profilepage() {
   return (
     <div className="h-screen pt-20">
       <div className="max-w-2xl mx-auto p-4 py-8">
+        <div className="flex items-center gap-2">
+          <Link
+            to={-1}
+            className="flex items-center gap-1 text-sm text-primary hover:underline"
+          >
+            <ArrowLeft size={16} />
+            Back
+          </Link>
+        </div>
         <div className="bg-base-300 rounded-xl p-6 space-y-8">
           <div className="text-center">
             <h1 className="text-2xl font-semibold ">Profile</h1>

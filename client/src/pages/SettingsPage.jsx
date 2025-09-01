@@ -1,6 +1,7 @@
 import { useThemeStore } from "../store/useThemeStore";
 import { THEMES } from "../constants";
-import { Send } from "lucide-react";
+import { ArrowLeft, Send } from "lucide-react";
+import { Link } from "react-router-dom";
 const PREVIEW_MESSAGES = [
   { id: 1, content: "Hey! How's it going?", isSent: false },
   {
@@ -16,6 +17,15 @@ export default function SettingsPage() {
   return (
     <div className="h-screen container mx-auto px-4 pt-20 max-w-5xl">
       <div className="space-y-6">
+        <div className="flex items-center gap-2">
+          <Link
+            to={-1}
+            className="flex items-center gap-1 text-sm text-primary hover:underline"
+          >
+            <ArrowLeft size={16} />
+            Back
+          </Link>
+        </div>
         <div className="flex flex-col gap-1">
           <h2 className="text-lg font-semibold">Theme</h2>
           <p className="text-sm text-base-content/70">
