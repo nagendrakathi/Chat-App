@@ -46,11 +46,12 @@ export default function Sidebar() {
           </label>
           <span className="text-xs text-zinc-500">
             {/* ({onlineUsers.length - 1} online) */}
-            {onlineUsers.length - 1 === 0
-              ? "(No users online)"
+            {onlineUsers.length === 1
+              ? "(0 online)"
               : `(${onlineUsers.length - 1} user${
                   onlineUsers.length - 1 > 1 ? "s" : ""
                 } online)`}
+            {/* --- IGNORE --- */}
           </span>
         </div>
       </div>
