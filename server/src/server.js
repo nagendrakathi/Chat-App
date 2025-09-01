@@ -5,9 +5,9 @@ import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import { connectDB } from "./config/db.js";
 import messageRoutes from "./routes/message.route.js";
+import { app, io, server } from "./config/socket.js";io
 
 env.config();
-const app = express();
 const PORT = process.env.PORT;
 
 app.use(express.json({ limit: "10mb" }));
@@ -21,9 +21,9 @@ app.use(
 );
 
 app.use("/api/auth", authRoutes);
-app.use("/api/message", messageRoutes);
+app.use("/api/messages", messageRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
 });
