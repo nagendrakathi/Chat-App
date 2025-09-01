@@ -7,6 +7,12 @@ const BASE_URL =
   import.meta.env.VITE_MODE === "development"
     ? "http://localhost:8000/api"
     : "/api";
+
+const SOCKET_BASE_URL =
+  import.meta.env.VITE_MODE === "development"
+    ? "http://localhost:8000"
+    : "https://chatty-g401.onrender.com";
+
 export const useAuthStore = create((set, get) => ({
   authUser: null,
   isSigningUp: false,
@@ -87,11 +93,13 @@ export const useAuthStore = create((set, get) => ({
   connectSocket: () => {
     const { authUser } = get();
     if (!authUser || get().socket?.connected) return;
-    const socket = io(BASE_URL, {
+
+    const socket = io(SOCKET_BASE_URL, {
       query: { userId: authUser._id },
+      withCredentials: true,
     });
-    socket.connect();
-    set({ socket: socket });
+
+    set({ socket });
     socket.on("getOnlineUsers", (userIds) => {
       set({ onlineUsers: userIds });
     });
